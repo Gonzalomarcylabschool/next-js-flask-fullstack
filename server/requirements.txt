@@ -1,4 +1,8 @@
+# import flask cors sqlalchemy psycopg2-binary python-dotenv gunicorn flask-migrate
 Flask==2.3.3
 flask-cors==4.0.0
+flask-sqlalchemy==3.0.5
+psycopg2-binary==2.9.7
 python-dotenv==1.0.0
 gunicorn==21.2.0
+flask-migrate==4.0.5
