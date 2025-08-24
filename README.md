@@ -1,15 +1,14 @@
 # Next.js & Flask Full-Stack Template
 
-This project serves as a minimal template for building full-stack applications using Next.js for the frontend, Python with Flask for the backend and PostgresSQL for the database. It provides a basic setup for a task management application, allowing you to quickly get started with your own features.
+This project serves as a minimal template for building full-stack applications using Next.js for the frontend, Python with Flask for the backend, and PostgreSQL for the database. It provides a functional task management application, allowing you to quickly get started with your own features.
 
 ## ✨ Features
 
-- **Frontend**: Built with [Next.js](https://nextjs.org/), a popular React framework for building server-side rendered and static websites.
-- **Backend**: A simple and lightweight RESTful API built with [Flask](https://flask.palletsprojects.com/), a micro web framework for Python.
-- **CORS Enabled**: The Flask backend is configured with `Flask-CORS` to allow cross-origin requests from the frontend.
-- **Database**: PostgreSQL with SQLAlchemy Core for database management.
-
-- **RESTful API**: The backend exposes a set of RESTful endpoints for managing tasks (Create, Read, Update, Delete).
+- **Frontend**: A responsive and interactive UI built with [Next.js](https://nextjs.org/) and styled with [Tailwind CSS](https://tailwindcss.com/).
+- **Backend**: A lightweight RESTful API built with [Flask](https://flask.palletsprojects.com/) and [SQLAlchemy Core](https://www.sqlalchemy.org/) for efficient database communication.
+- **Database**: A persistent PostgreSQL database to store and manage tasks.
+- **RESTful API**: A full suite of RESTful endpoints for managing tasks (Create, Read, Update, Delete).
+- **Environment-Based Configuration**: Secure database connection management using a `.env` file.
 
 ## 🚀 Getting Started
 
@@ -21,6 +20,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 - [Python](https://www.python.org/downloads/) (v3.8 or later recommended)
 - `pip` (Python package installer)
 - `venv` (for creating virtual environments)
+- [PostgreSQL](https://www.postgresql.org/download/) installed and running.
 
 ### Backend Setup (Flask)
 
@@ -29,7 +29,14 @@ Follow these instructions to get a copy of the project up and running on your lo
     cd server
     ```
 
-2.  **Create and activate a virtual environment:**
+2.  **Create a `.env` file** for your environment variables. You can copy the example below.
+    ```
+    # server/.env
+    DATABASE_URL="postgresql://user:password@host:port/dbname"
+    ```
+    Replace `user`, `password`, `host`, `port`, and `dbname` with your PostgreSQL credentials.
+
+3.  **Create and activate a virtual environment:**
     ```bash
     # For macOS/Linux
     python3 -m venv venv
@@ -40,12 +47,17 @@ Follow these instructions to get a copy of the project up and running on your lo
     .\venv\Scripts\activate
     ```
 
-3.  **Install the required Python packages:**
+4.  **Install the required Python packages:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Run the Flask application:**
+5.  **Create the database table:** Run the `db.py` script to create the `tasks` table in your database.
+    ```bash
+    python db.py
+    ```
+
+6.  **Run the Flask application:**
     ```bash
     python app.py
     ```
@@ -75,6 +87,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 .
 ├── server/
 │   ├── app.py              # Main Flask application file
+│   ├── db.py               # Database connection and schema setup
 │   ├── requirements.txt    # Python dependencies
 │   └── venv/               # Python virtual environment
 └── task-app-frontend/
